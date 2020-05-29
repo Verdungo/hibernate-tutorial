@@ -22,10 +22,11 @@ public class DeleteInstructorDetailDemo {
             // start transaction
             session.beginTransaction();
 
-            InstructorDetail instructorDetail = session.get(InstructorDetail.class, 3);
+            InstructorDetail instructorDetail = session.get(InstructorDetail.class, 5);
 
             // print
             if (instructorDetail != null) {
+                instructorDetail.getInstructor().setInstructorDetail(null);
                 session.delete(instructorDetail);
             }
 

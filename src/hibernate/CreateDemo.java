@@ -23,17 +23,17 @@ public class CreateDemo {
 
         try {
             // create obj
-//            InstructorDetail instructorDetail = new InstructorDetail("youtube.com/jdoe", "swimming");
-//            Instructor instructor = new Instructor("John", "Doe", "johndoe@mail.com", instructorDetail);
+            InstructorDetail instructorDetail = new InstructorDetail("youtube.com/jdoe", "swimming");
+            Instructor instructor = new Instructor("John", "Doe", "johndoe@mail.com", instructorDetail);
 
             //InstructorDetail instructorDetail2 = new InstructorDetail("--", "guitear");
-            Instructor instructor2 = new Instructor("Lol", "Kek", "cheburek@mail.com", null);
+            //Instructor instructor2 = new Instructor("Lol", "Kek", "cheburek@mail.com", null);
 
             // start transaction
             session.beginTransaction();
 
             // save
-            session.save(instructor2);
+            session.save(instructor);
 
             // commit
             session.getTransaction().commit();
