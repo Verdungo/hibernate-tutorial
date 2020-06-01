@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class CreateCourcesDemo {
+public class EagerLazyDemo {
     public static void main(String[] args) {
         // create session
         SessionFactory factory = new Configuration()
@@ -22,34 +22,24 @@ public class CreateCourcesDemo {
 
 
         try {
-            // create obj
-
-
             // start transaction
             session.beginTransaction();
 
             int id = 6;
             Instructor instructor = session.get(Instructor.class, id);
-            //Course course1 = new Course("Java");
-            Course course2 = new Course("Python");
-            //Course course3 = new Course("Ruby");
-            //instructor.add(course1);
-            instructor.add(course2);
-            //instructor.add(course3);
-
-            // save
-            //session.save(course1);
-            session.save(course2);
-            //session.save(course3);
 
             System.out.println(instructor);
 
             // commit
             session.getTransaction().commit();
-            System.out.println("Saved successfully!");
+
+            System.out.println(instructor.getCourses());
+
+            System.out.println("Finished successfully!");
         } catch (Exception e){
             e.printStackTrace();
         } finally {
+            session.close();
             factory.close();
             System.out.println("Factory closed.");
         }
